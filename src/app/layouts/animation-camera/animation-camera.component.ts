@@ -82,9 +82,13 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
       // this.preview_url = 'https://i.ibb.co/98W13PY/c1f64245afb2.gif';
       // QRCode(document.getElementById("qrcode"), 'https://i.ibb.co/98W13PY/c1f64245afb2.gif');
       let base64Img = this.currentCapture.replace('data:image/png;base64,', '');
+      
+      var form:FormData = new FormData();
+      form.append('image', base64Img);
+      
       let headers: HttpHeaders = new HttpHeaders();
-      headers = headers.append("Content-Type", "application/json");
-      this.http.post('https://api.imgbb.com/1/upload?expiration=600&key=0c36535baa454956c6bb1f80b9ea5da4', {image: base64Img}).subscribe((res: any) => {
+      headers = headers.append("Content-Type", "multipart/form-data");
+      this.http.post('https://api.imgbb.com/1/upload?expiration=600&key=0c36535baa454956c6bb1f80b9ea5da4', form, { headers: headers }).subscribe((res: any) => {
         // console.log(res);
         try {
           let display_url = res.data.display_url;
