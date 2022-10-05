@@ -1,0 +1,27 @@
+<div class="webcam-container" id="webcam-container">
+    <!-- <lottie-player style="position: absolute; z-index: 100" src="https://assets8.lottiefiles.com/packages/lf20_ei2gf306.json" background="transparent"  speed="1" loop autoplay >
+    </lottie-player> -->
+    <img src="./../../../assets/overlays/demo.webp" class="camera-overlay" />
+</div>
+<!-- https://assets8.lottiefiles.com/packages/lf20_2ocqwi7s.json -->
+<!-- https://assets4.lottiefiles.com/packages/lf20_yrdsdbps.json -->
+
+<div class="preview-container" *ngIf="currentCapture">
+    <img class="preview-img" src="{{ currentCapture }}" />
+    <div class="qrcode-section">
+        <div class="qrcode-container" id="qrcode-container">
+            <a [href]="preview_url" target="_blank"> LINK </a>
+            <div id="qrcode">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <button class="btn btn-primary" (click)="capture()">Capture</button>
+
+<div>
+    <div *ngFor="let c of captures">
+        <img style="width: 100%; height: auto;" src="{{ c }}" />
+    </div>
+</div> -->
