@@ -42,6 +42,14 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  clickImage() {
+    if(this.currentCapture) {
+      this.currentCapture = null;
+    } else {
+      this.captureAndShow();
+    }
+  }
+
   ngAfterViewInit(): void {
       if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         let videoContainer = document.getElementById('webcam-container');
