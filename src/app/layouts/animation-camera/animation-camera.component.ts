@@ -71,7 +71,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
     let that = this;
     html2canvas(videoContainer, { scrollY: -window.scrollY, scale: 1, width: videoContainer.offsetWidth, height: videoContainer.offsetHeight }).then(function (canvas) {
       that.currentCapture = canvas.toDataURL('image/png');
-      console.log(that.currentCapture);
+      // console.log(that.currentCapture);
       setTimeout(() => {
         that.uploadImage();
       });
@@ -85,9 +85,10 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
       let headers: HttpHeaders = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
       this.http.post('https://api.imgbb.com/1/upload?expiration=600&key=0c36535baa454956c6bb1f80b9ea5da4', {image: base64Img}).subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         try {
           let display_url = res.data.display_url;
+          this.preview_url = display_url;
           new QRCode(document.getElementById("qrcode"), display_url);
         } catch(e) {
 

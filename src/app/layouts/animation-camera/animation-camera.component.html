@@ -9,7 +9,7 @@
 <div class="preview-container" *ngIf="currentCapture">
     <img class="preview-img" src="{{ currentCapture }}" (click)="clickImage()" />
     <div class="qrcode-section">
-        <div class="qrcode-container" id="qrcode-container">
+        <div class="qrcode-container" id="qrcode-container" *ngIf="preview_url">
             <a [href]="preview_url" target="_blank"> LINK </a>
             <div id="qrcode">
             </div>
