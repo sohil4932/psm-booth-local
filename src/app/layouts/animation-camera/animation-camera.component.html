@@ -3,25 +3,17 @@
     </lottie-player> -->
     <img src="./../../../assets/overlays/demo.webp" class="camera-overlay" />
 </div>
-<!-- https://assets8.lottiefiles.com/packages/lf20_2ocqwi7s.json -->
-<!-- https://assets4.lottiefiles.com/packages/lf20_yrdsdbps.json -->
 
 <div class="preview-container" *ngIf="currentCapture">
     <img class="preview-img" src="{{ currentCapture }}" (click)="clickImage()" />
     <div class="qrcode-section">
         <div class="qrcode-container" id="qrcode-container" *ngIf="preview_url">
-            <a [href]="preview_url" target="_blank"> LINK </a>
-            <div id="qrcode">
-            </div>
+            <!-- <a [href]="preview_url" target="_blank"> LINK </a> -->
+            <qrcode [qrdata]="preview_url" [width]="50" [errorCorrectionLevel]="'M'"></qrcode>
+            <!-- <div id="qrcode">
+            </div> -->
         </div>
     </div>
 </div>
 
-
-<!-- <button class="btn btn-primary" (click)="capture()">Capture</button>
-
-<div>
-    <div *ngFor="let c of captures">
-        <img style="width: 100%; height: auto;" src="{{ c }}" />
-    </div>
-</div> -->
+<!-- <input type="file" (input)="onInput($event)" /> -->

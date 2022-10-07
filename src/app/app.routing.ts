@@ -14,7 +14,7 @@ import { AnimationCameraComponent } from './layouts/animation-camera/animation-c
 const routes: Routes =[
     { path: '', redirectTo: 'camera', pathMatch: 'full' },
     { path: 'camera',             component: AnimationCameraComponent },
-    { path: 'preview/:id',             component: PreviewImageComponent },
+    { path: 'preview',             component: PreviewImageComponent },
     { path: 'home',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },

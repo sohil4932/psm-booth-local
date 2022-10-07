@@ -16,6 +16,13 @@ import { TemplatesListComponent } from './layouts/templates-list/templates-list.
 import { AnimationCameraComponent } from './layouts/animation-camera/animation-camera.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PreviewImageComponent } from './layouts/preview-image/preview-image.component';
+import { environment } from 'environments/environment';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 @NgModule({
@@ -28,6 +35,9 @@ import { PreviewImageComponent } from './layouts/preview-image/preview-image.com
     PreviewImageComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAnalyticsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -37,6 +47,7 @@ import { PreviewImageComponent } from './layouts/preview-image/preview-image.com
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

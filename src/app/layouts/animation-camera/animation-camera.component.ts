@@ -1,10 +1,13 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+// import { AngularFireStorage } from '@angular/fire/compat/storage';
 import html2canvas from "html2canvas";
 (window as any).html2canvas = html2canvas;
 import { HttpHeaders, HttpClient } from "@angular/common/http";
-import QRCode from "qrcode";
-(window as any).QRCode = QRCode;
+// import QRCode from "qrcode";
+// (window as any).QRCode = QRCode;
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-animation-camera',
@@ -26,7 +29,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
 
   preview_url;
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, private storage: AngularFireStorage) { }
 
   @HostListener('window:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
@@ -78,26 +81,81 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
     });
   }
 
-  uploadImage() {
-      // this.preview_url = 'https://i.ibb.co/98W13PY/c1f64245afb2.gif';
-      // QRCode(document.getElementById("qrcode"), 'https://i.ibb.co/98W13PY/c1f64245afb2.gif');
-      let base64Img = this.currentCapture.replace('data:image/png;base64,', '');
-      
+  onInput(event) {
+    console.log(event.target.files[0])
+
       var form:FormData = new FormData();
-      form.append('image', base64Img);
+      form.append('image', event.target.files[0]);
       
       let headers: HttpHeaders = new HttpHeaders();
       headers = headers.append("Content-Type", "multipart/form-data");
-      this.http.post('https://api.imgbb.com/1/upload?expiration=600&key=0c36535baa454956c6bb1f80b9ea5da4', form, { headers: headers }).subscribe((res: any) => {
-        // console.log(res);
+      this.http.post('https://api.imgbb.com/1/upload?key=361d86bf4ea57e82a5666a1c1505647e', form, { headers: headers }).subscribe((res: any) => {
+        // console.log(res); expiration=600&
+        console.log(res);
+        res = res.json();
         try {
           let display_url = res.data.display_url;
           this.preview_url = display_url;
-          new QRCode(document.getElementById("qrcode"), display_url);
+          // new QRCode(document.getElementById("qrcode"), display_url);
         } catch(e) {
-
+          console.log({e})
         }
+      }, (err) => {
+        console.warn({err});
       });
+  }
+
+  uploadImage() {
+    const filePath = '/booth1/' + new Date().getTime() + '.png';
+    const storageRef = this.storage.ref(filePath);
+    // const uploadTask = this.storage.upload(filePath, this.currentCapture, 'data_url');
+    const uploadTask = storageRef.putString(this.currentCapture, 'data_url');
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          console.log(downloadURL);
+          this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', ''));
+          // this.preview_url = location.host + '/preview?url=' + downloadURL.replace('https://', '');
+          console.log(this.preview_url);
+          // new QRCode(document.getElementById("qrcode"), downloadURL);
+        });
+      })
+    ).subscribe((res:any) => {
+    }, (err) => {
+      console.error({err});
+    });
+
+      // let base64Img = this.currentCapture.replace('data:image/png;base64,', '');
+    
+      // var formData:FormData = new FormData();
+      // formData.append('image', base64Img);
+      // var xhr = new XMLHttpRequest();
+      // xhr.withCredentials = false;
+      // xhr.addEventListener("readystatechange", function() {
+      //   if(this.readyState === 4) {
+      //     console.log(this.responseText);
+      //   }
+      // });
+      // xhr.open("POST", "https://api.imgbb.com/1/upload?key=2af08229230607703946abc667658877");
+      // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+      // xhr.send(formData);
+      // return;
+
+      // let headers: HttpHeaders = new HttpHeaders();
+      // headers = headers.append("Content-Type", "multipart/form-data");
+    
+      // this.http.post('https://api.imgbb.com/1/upload?expiration=600&key=2af08229230607703946abc667658877', formData, { headers: headers }).subscribe((res: any) => {
+      //   res = res.json();
+      //   try {
+      //     let display_url = res.data.display_url;
+      //     this.preview_url = display_url;
+      //     new QRCode(document.getElementById("qrcode"), display_url);
+      //   } catch(e) {
+      //     console.log({e})
+      //   }
+      // }, (err) => {
+      //   console.warn({err});
+      // });
   }
 
   public capture() {
