@@ -7,11 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./preview-image.component.scss']
 })
 export class PreviewImageComponent implements OnInit {
+  preview_url;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('https://'+ this.route.snapshot.queryParams['url'] + '?alt=media');
+    this.preview_url = 'https://'+ this.route.snapshot.queryParams['url'] + '?alt=media';
   }
 
 }
