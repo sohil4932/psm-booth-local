@@ -114,7 +114,8 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
-          this.preview_url = encodeURI(location.host + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString());
+          this.preview_url = location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString();
+          // this.preview_url = encodeURI(location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString());
           // this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', '') + '&booth=booth1' + '&fileName=' + fileName.toString());
           console.log(this.preview_url);
         });
