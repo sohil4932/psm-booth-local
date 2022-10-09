@@ -1,0 +1,38 @@
+.preview-img-container {
+    position: relative;
+    height: 100vh;
+    overflow: auto;
+    background-position: center;
+    background-size: cover;
+}
+
+.overlay {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgb(255 255 255 / 72%);
+}
+
+.preview-img {
+    // border: 5px solid #28757d;
+    height: 80vh;
+    width: auto;
+    text-align: center;
+    padding-top: 5vh;
+    img {
+        border: 5px solid #28757d;
+        height: auto; 
+        max-height: 100%;
+    }
+}
+
+.action-btn {
+    background: rgba(0, 0, 0, 0.184);
+    color: black;
+    border: 0;
+}

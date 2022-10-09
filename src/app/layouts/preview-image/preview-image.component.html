@@ -1,4 +1,20 @@
 <ng-container *ngIf="loader">Loading</ng-container>
-<div id="preview_img">
-    <img style="width: 100%; height: auto;" [src]="preview_url" />
+<div class="preview-img-container" [style.backgroundImage]="'url(' + preview_url + ')'">
+    <div class="overlay">
+        <div class="preview-img" id="preview-img">
+            <img [src]="preview_url" />
+        </div>
+        <div class="row justify-content-center mt-4 mx-0">
+            <!-- <div class="col-auto">
+                <button class="btn action-btn" (click)="share()">
+                    Share <i class="fa fa-share-alt fa-lg ml-1" aria-hidden="true"></i>
+                </button>
+            </div> -->
+            <div class="col-auto">
+                <button class="btn action-btn" (click)="getBase64Image()">
+                    Download <i class="fa fa-download fa-lg ml-1" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

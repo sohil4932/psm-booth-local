@@ -37,6 +37,9 @@ export class PreviewImageComponent implements OnInit {
       this.preview_url = downloadURL;
       this.loader = false;
     })
+    storageRef.getMetadata().subscribe(metaData => {
+      console.log({metaData});
+    })
   }
 
   downloadImage(event) {
@@ -98,6 +101,55 @@ export class PreviewImageComponent implements OnInit {
           link.remove();
         }, 100);
       });
+  }
+
+  share() {
+    let text = 'Checkout my latest Photo booth image here:' + window.location.href;
+    let title = 'Photo Booth';
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        text: text,
+      })
+        .then(() => { })
+        .catch((error) => { });
+    } else {
+      alert('Sharing is not supported in your browser.')
+    }
+  }
+
+  download() {
+      let videoContainer = document.getElementById('preview-img');
+      console.log(videoContainer)
+      html2canvas(videoContainer, { scrollY: -window.scrollY, scale: 1}).then(function (canvas) {
+        console.log(canvas)
+        var link = document.createElement("a");
+        document.body.appendChild(link);
+        link.download = 'PhotoBooth.png';
+        link.href = canvas.toDataURL("image/png");
+        link.target = '_blank';
+        link.click();
+        link.remove();
+      });
+  }
+
+  getBase64Image() {
+    let img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.src = this.preview_url;
+    img.onload = () => {
+      // We create a HTML canvas object that will create a 2d image
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext("2d");
+      // This will draw image    
+      ctx.drawImage(img, 0, 0);
+      // Convert the drawn image to Data URL
+      var dataURL = canvas.toDataURL("image/png");
+      // return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      console.log(dataURL);
+    };
   }
 
 }
