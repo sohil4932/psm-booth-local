@@ -4,6 +4,27 @@
     <img src="./../../../assets/overlays/demo.webp" class="camera-overlay" />
 </div>
 
+<div class="capture-loader">
+    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 7 || timeLeft == 6">
+        Ready?
+    </div>
+    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 5">
+        4
+    </div>
+    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 4">
+        3
+    </div>
+    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 3">
+        2
+    </div>
+    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 2">
+        1
+    </div>
+    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 1">
+        Smile !!!
+    </div>
+</div>
+
 <div class="preview-container" *ngIf="currentCapture">
     <img class="preview-img" src="{{ currentCapture }}" (click)="clickImage()" />
     <div class="qrcode-section">

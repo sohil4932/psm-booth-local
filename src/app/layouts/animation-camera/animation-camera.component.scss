@@ -56,3 +56,18 @@
         color: white;
     }
 }
+
+.capture-loader {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    .capture-loader-count {
+        font-size: 20vw;
+        font-family: fantasy;
+        text-align: center;
+        margin-top: 60%;
+        color: #28757d;
+    }
+}

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 // import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -14,7 +14,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './animation-camera.component.html',
   styleUrls: ['./animation-camera.component.scss']
 })
-export class AnimationCameraComponent implements OnInit, AfterViewInit {
+export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestroy {
   // @ViewChild("video")
   // public video: ElementRef;
 
@@ -29,6 +29,9 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
 
   preview_url;
 
+  interval;
+  timeLeft: number = 0;
+
   constructor(public http: HttpClient, private storage: AngularFireStorage) { }
 
   @HostListener('window:keypress', ['$event'])
@@ -37,7 +40,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
       if(this.currentCapture) {
         this.currentCapture = null;
       } else {
-        this.captureAndShow();
+        this.startCaptureTimer();
       }
     }
   }
@@ -45,11 +48,30 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  startCaptureTimer() {
+    this.timeLeft = 7;
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 0;
+        setTimeout(() => {
+          this.captureAndShow();
+          this.stopCaptureTimer();
+        });
+      }
+    },1000);
+  }
+
+  stopCaptureTimer() {
+    clearInterval(this.interval);
+  }
+
   clickImage() {
     if(this.currentCapture) {
       this.currentCapture = null;
     } else {
-      this.captureAndShow();
+      this.startCaptureTimer();
     }
   }
 
@@ -185,6 +207,10 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
       // that.downloadActivityLoader = false;
     });
 
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 
 }
