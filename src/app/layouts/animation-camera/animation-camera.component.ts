@@ -106,18 +106,17 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
   }
 
   uploadImage() {
-    const filePath = '/booth1/' + new Date().getTime() + '.png';
+    const fileName = new Date().getTime();
+    const filePath = '/booth1/' + fileName + '.png';
     const storageRef = this.storage.ref(filePath);
     // const uploadTask = this.storage.upload(filePath, this.currentCapture, 'data_url');
     const uploadTask = storageRef.putString(this.currentCapture, 'data_url');
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
-          console.log(downloadURL);
-          this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', ''));
-          // this.preview_url = location.host + '/preview?url=' + downloadURL.replace('https://', '');
+          this.preview_url = encodeURI(location.host + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString());
+          // this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', '') + '&booth=booth1' + '&fileName=' + fileName.toString());
           console.log(this.preview_url);
-          // new QRCode(document.getElementById("qrcode"), downloadURL);
         });
       })
     ).subscribe((res:any) => {

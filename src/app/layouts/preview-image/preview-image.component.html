@@ -1,1 +1,4 @@
-<img style="width: 100%; height: auto;" [src]="preview_url" />
+<ng-container *ngIf="loader">Loading</ng-container>
+<div id="preview_img">
+    <img style="width: 100%; height: auto;" [src]="preview_url" />
+</div>
