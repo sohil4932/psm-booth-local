@@ -120,6 +120,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit {
         });
       })
     ).subscribe((res:any) => {
+      console.log({res});
     }, (err) => {
       console.error({err});
     });
