@@ -105,9 +105,15 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   captureAndShow() {
     let videoContainer = document.getElementById('webcam-container');
     let that = this;
-    html2canvas(videoContainer, { scrollY: -window.scrollY, scale: 1, width: videoContainer.offsetWidth, height: videoContainer.offsetHeight }).then(function (canvas) {
+    // html2canvas(videoContainer, { scrollY: -window.scrollY, scale: 1, width: videoContainer.offsetWidth, height: videoContainer.offsetHeight }).then(function (canvas) {
+    //   that.currentCapture = canvas.toDataURL('image/png');
+    //   // setTimeout(() => {
+    //   //   that.uploadImage();
+    //   // });
+    // });
+
+    html2canvas(videoContainer).then(function (canvas) {
       that.currentCapture = canvas.toDataURL('image/png');
-      // console.log(that.currentCapture);
       setTimeout(() => {
         that.uploadImage();
       });
