@@ -87,6 +87,17 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
         videoContainer.appendChild(this.video);
         navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
           this.video.srcObject = stream;
+          setTimeout(() => {
+            try {
+              let imageTag = document.getElementById('camera-overlay');
+              let imgWidth = imageTag.offsetWidth;
+              let marginLeft = 0;
+              marginLeft = (imgWidth/2) - (this.video.offsetWidth/2);
+              this.video.style.marginLeft = marginLeft + 'px';
+            } catch(e) {
+              this.video.style.marginLeft = '-50%';
+            }
+          }, 3000);
         });
       }
   }
