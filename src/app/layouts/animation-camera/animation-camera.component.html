@@ -1,4 +1,4 @@
-<div class="webcam-container" id="webcam-container" (click)="clickImage()">
+<div class="webcam-container" id="webcam-container">
     <!-- <lottie-player style="position: absolute; z-index: 100" src="https://assets8.lottiefiles.com/packages/lf20_ei2gf306.json" background="transparent"  speed="1" loop autoplay >
     </lottie-player> -->
     <img src="./../../../assets/overlays/demo.webp" id="camera-overlay" class="camera-overlay" />
@@ -26,7 +26,7 @@
 </div>
 
 <div class="preview-container" *ngIf="currentCapture">
-    <img class="preview-img" src="{{ currentCapture }}" (click)="clickImage()" />
+    <img class="preview-img" src="{{ currentCapture }}" />
     <div class="qrcode-section">
         <div class="qrcode-container" id="qrcode-container" *ngIf="preview_url">
             <!-- <a [href]="preview_url" target="_blank"> LINK </a> -->

@@ -67,13 +67,13 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
     clearInterval(this.interval);
   }
 
-  clickImage() {
-    if(this.currentCapture) {
-      this.currentCapture = null;
-    } else {
-      this.startCaptureTimer();
-    }
-  }
+  // clickImage() {
+  //   if(this.currentCapture) {
+  //     this.currentCapture = null;
+  //   } else {
+  //     this.startCaptureTimer();
+  //   }
+  // }
 
   ngAfterViewInit(): void {
       if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
