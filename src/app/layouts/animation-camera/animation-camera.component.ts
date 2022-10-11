@@ -39,6 +39,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
     if(event.key && event.key == 'Enter') {
       if(this.currentCapture) {
         this.currentCapture = null;
+        this.preview_url = null;
       } else {
         this.startCaptureTimer();
       }
