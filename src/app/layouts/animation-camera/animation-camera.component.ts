@@ -32,10 +32,13 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   interval;
   timeLeft: number = 0;
 
+  loading = 0;
+
   constructor(public http: HttpClient, private storage: AngularFireStorage) { }
 
   @HostListener('window:keypress', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) { 
+  handleKeyboardEvent(event: KeyboardEvent) {
+    console.log('Key Log > ', event.key); 
     if(event.key && event.key == 'Enter') {
       if(this.currentCapture) {
         this.currentCapture = null;
