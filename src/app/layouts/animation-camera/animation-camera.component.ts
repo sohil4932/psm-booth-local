@@ -33,13 +33,14 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   timeLeft: number = 0;
 
   loading = 0;
+  capturing: boolean = false;
 
   constructor(public http: HttpClient, private storage: AngularFireStorage) { }
 
   @HostListener('window:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     console.log('Key Log > ', event.key); 
-    if(event.key && event.key == 'Enter') {
+    if(event.key && event.key == 'Enter' && !this.capturing) {
       if(this.currentCapture) {
         this.currentCapture = null;
         this.preview_url = null;
@@ -53,6 +54,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   startCaptureTimer() {
+    this.capturing = true;
     this.timeLeft = 7;
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
@@ -158,6 +160,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           this.preview_url = location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString();
+          this.capturing = false;
           // this.preview_url = encodeURI(location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString());
           // this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', '') + '&booth=booth1' + '&fileName=' + fileName.toString());
           console.log(this.preview_url);
@@ -167,6 +170,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
       console.log({res});
     }, (err) => {
       console.error({err});
+      this.capturing = false;
     });
 
       // let base64Img = this.currentCapture.replace('data:image/png;base64,', '');
