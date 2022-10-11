@@ -134,6 +134,15 @@ export class PreviewImageComponent implements OnInit {
   }
 
   getBase64Image() {
+    // var xhr = new XMLHttpRequest();
+    // xhr.responseType = 'blob';
+    // xhr.onload = (event) => {
+    //   var blob = xhr.response;
+    // };
+    // xhr.open('GET', this.preview_url);
+    // xhr.send();
+    // return;
+
     let img = new Image();
     img.crossOrigin = 'Anonymous';
     img.src = this.preview_url;
