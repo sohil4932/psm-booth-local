@@ -28,7 +28,18 @@
 <div class="preview-container" *ngIf="currentCapture">
     <img class="preview-img" src="{{ currentCapture }}" />
     <div class="qrcode-section">
-        <div class="qrcode-container" id="qrcode-container" *ngIf="preview_url">
+        <div class="qrcode-container app-fade" *ngIf="!preview_url">
+            <div class="d-inline-block" style="width: 180px;">
+                <circle-progress
+                    [percent]="loading" [titleColor]="'#ffffff'"  [unitsColor]="'#ffffff'" [outerStrokeColor]="'#2a6469'"
+                    [radius]="100" [outerStrokeWidth]="18" [innerStrokeWidth]="18" [space]="-18"
+                    [outerStrokeColor]="'#0071c5'" [innerStrokeColor]="'#e7e8ea'" [titleFontSize]="54" [unitsFontSize]="24"
+                    [showSubtitle]="false" [animation]="true" [animationDuration]="300" [startFromZero]="false"
+                    [responsive]="true" [showZeroOuterStroke]="false">
+                </circle-progress>
+            </div>
+        </div>
+        <div class="qrcode-container app-fade" id="qrcode-container" *ngIf="preview_url">
             <!-- <a [href]="preview_url" target="_blank"> LINK </a> -->
             <qrcode [qrdata]="preview_url" [width]="150" [errorCorrectionLevel]="'M'"></qrcode>
             <!-- <div id="qrcode">

@@ -32,7 +32,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   interval;
   timeLeft: number = 0;
 
-  loading = 0;
+  loading:any = 0;
   capturing: boolean = false;
 
   constructor(public http: HttpClient, private storage: AngularFireStorage) { }
@@ -44,6 +44,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
       if(this.currentCapture) {
         this.currentCapture = null;
         this.preview_url = null;
+        this.loading = 0;
       } else {
         this.startCaptureTimer();
       }
@@ -55,6 +56,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
 
   startCaptureTimer() {
     this.capturing = true;
+    this.loading = 0;
     this.timeLeft = 7;
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
@@ -167,7 +169,13 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
         });
       })
     ).subscribe((res:any) => {
-      console.log({res});
+      // console.log({res});
+      try {
+        this.loading = ((100 * res.bytesTransferred) / res.totalBytes).toFixed(0);
+      } catch(e) {
+        this.loading = 100;
+      }
+      console.log(this.loading);
     }, (err) => {
       console.error({err});
       this.capturing = false;

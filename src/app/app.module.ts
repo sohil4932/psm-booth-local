@@ -23,6 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
-    QRCodeModule
+    QRCodeModule,
+    NgCircleProgressModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]
