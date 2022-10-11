@@ -24,6 +24,7 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     AppRoutingModule,
     QRCodeModule,
     NgCircleProgressModule.forRoot({}),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
