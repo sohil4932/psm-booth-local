@@ -1,7 +1,7 @@
 {
   "name": "PSM Booth",
   "short_name": "PSM Booth",
-  "theme_color": "#1976d2",
+  "theme_color": "#1f635c",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
