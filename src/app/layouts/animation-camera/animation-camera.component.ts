@@ -93,7 +93,8 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
         // this.video.width = videoContainer.offsetWidth;
         // this.video.height = videoContainer.offsetHeight;
         videoContainer.appendChild(this.video);
-        navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+        // navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+        navigator.mediaDevices.getUserMedia({ video: {advanced: [{width: 2160, height: 3840}]} }).then((stream) => {
           this.video.srcObject = stream;
           setTimeout(() => {
             try {
