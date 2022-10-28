@@ -97,18 +97,22 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
         // navigator.mediaDevices.getUserMedia({ video: {advanced: [{width: 2160, height: 3840}]} }).then((stream) => {
         // navigator.mediaDevices.getUserMedia({ video: {advanced: [{aspectRatio: 9/16}]} }).then((stream) => {  
 
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", advanced: [{width: {ideal: 4096 }, height: {ideal: 2160 }}]} }).then((stream) => {  
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", advanced: [{width: {ideal: 1280 }, height: {ideal: 720 }}]} }).then((stream) => {  
           this.video.srcObject = stream;
           setTimeout(() => {
-            try {
+            // try {
               let imageTag = document.getElementById('camera-overlay');
               let imgWidth = imageTag.offsetWidth;
-              let marginLeft = 0;
-              marginLeft = (imgWidth/2) - (this.video.offsetWidth/2);
-              this.video.style.marginLeft = marginLeft + 'px';
-            } catch(e) {
-              this.video.style.marginLeft = '-50%';
-            }
+              console.log(imgWidth);
+              console.log(imageTag.offsetHeight);
+              console.log(this.video.offsetWidth);
+              console.log(this.video.offsetHeight);
+            //   let marginLeft = 0;
+            //   marginLeft = (imgWidth/2) - (this.video.offsetWidth/2);
+            //   this.video.style.marginLeft = marginLeft + 'px';
+            // } catch(e) {
+            //   this.video.style.marginLeft = '-50%';
+            // }
           }, 3000);
         });
       }
