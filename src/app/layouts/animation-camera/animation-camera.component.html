@@ -1,6 +1,8 @@
 <div class="webcam-container" id="webcam-container">
     <lottie-player style="position: absolute; z-index: 100" src="./../../../assets/overlays/overlay1.json" background="transparent"  speed="2" loop autoplay >
     </lottie-player>
+    <lottie-player style="position: absolute; z-index: 99; transform: scaleX(-1);" src="./../../../assets/overlays/character1.json" background="transparent"  speed="2" [loop]="true" autoplay >
+    </lottie-player>
     <!-- <img src="./../../../assets/overlays/demo.webp" id="camera-overlay" class="camera-overlay" /> -->
 </div>
 
@@ -40,12 +42,8 @@
             </div>
         </div>
         <div class="qrcode-container app-fade" id="qrcode-container" *ngIf="preview_url">
-            <!-- <a [href]="preview_url" target="_blank"> LINK </a> -->
             <qrcode [qrdata]="preview_url" [width]="150" [errorCorrectionLevel]="'M'"></qrcode>
-            <!-- <div id="qrcode">
-            </div> -->
         </div>
     </div>
 </div>
 
-<!-- <input type="file" (input)="onInput($event)" /> -->
