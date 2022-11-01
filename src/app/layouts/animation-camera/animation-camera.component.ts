@@ -35,7 +35,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
 
   constructor(private storage: AngularFireStorage, private imageCompress: NgxImageCompressService, private route: ActivatedRoute) { }
 
-  @HostListener('window:keypress', ['$event'])
+  @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     console.log('Key Log > ', event.key); 
     if(event.key && (event.key == 'Enter' || event.key == 'PageUp') && !this.capturing) {
