@@ -7,6 +7,8 @@ import html2canvas from "html2canvas";
 import { finalize } from 'rxjs/operators';
 
 import {NgxImageCompressService} from "ngx-image-compress";
+import { ActivatedRoute } from '@angular/router';
+import { SCREENS } from 'app/shared/constants/common.constants';
 
 @Component({
   selector: 'app-animation-camera',
@@ -28,7 +30,10 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   loading:any = 0;
   capturing: boolean = false;
 
-  constructor(private storage: AngularFireStorage, private imageCompress: NgxImageCompressService) { }
+  screens = SCREENS;
+  currentScreen;
+
+  constructor(private storage: AngularFireStorage, private imageCompress: NgxImageCompressService, private route: ActivatedRoute) { }
 
   @HostListener('window:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -45,12 +50,29 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+        try {
+          let currentScreen;
+          if(params && params.booth) {
+            currentScreen = params.booth;
+          } else {
+            currentScreen = this.screens[0].name;
+          }
+          let screen = this.screens.find(s => s.name == currentScreen);
+          this.currentScreen = screen;
+          console.log(this.currentScreen);
+        } catch(e) {
+
+        }
+      }
+    );
   }
 
   startCaptureTimer() {
     this.capturing = true;
     this.loading = 0;
-    this.timeLeft = 7;
+    this.timeLeft = 3;
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;

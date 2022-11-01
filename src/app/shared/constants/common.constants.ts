@@ -5,5 +5,12 @@ export const SCREENS = [
         lottie2: 'assets/overlays/character1.json',
         image1: '',
         image2: ''
-    }
+    },
+    {
+        name: 'booth2',
+        lottie1: '',
+        lottie2: '',
+        image1: 'assets/overlays/demo.webp',
+        image2: ''
+    },
 ];

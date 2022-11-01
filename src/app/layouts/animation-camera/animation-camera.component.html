@@ -1,29 +1,34 @@
 <div class="webcam-container" id="webcam-container">
-    <lottie-player style="position: absolute; z-index: 100" src="./../../../assets/overlays/overlay1.json" background="transparent"  speed="2" loop autoplay >
-    </lottie-player>
-    <lottie-player style="position: absolute; z-index: 99; transform: scaleX(-1);" src="./../../../assets/overlays/character1.json" background="transparent"  speed="2" [loop]="true" autoplay >
-    </lottie-player>
+    <ng-container *ngIf="currentScreen?.lottie1">
+        <lottie-player style="position: absolute; z-index: 100" [src]="currentScreen?.lottie1" background="transparent"  speed="2" loop autoplay >
+        </lottie-player>
+    </ng-container>
+    <ng-container *ngIf="currentScreen?.lottie2">
+        <lottie-player *ngIf="capturing" style="position: absolute; z-index: 99; transform: scaleX(-1);" [src]="currentScreen?.lottie2" background="transparent"  speed="2" [loop]="false" autoplay >
+        </lottie-player>
+    </ng-container>
+    <ng-container *ngIf="currentScreen?.image1">
+        <img [src]="currentScreen?.image1" style="z-index: 100;" id="camera-overlay" class="camera-overlay" />
+    </ng-container>
+    <ng-container *ngIf="currentScreen?.image2">
+        <img [src]="currentScreen?.image2" style="z-index: 99;" class="camera-overlay" />
+    </ng-container>
+    <!-- <lottie-player style="position: absolute; z-index: 100" src="./../../../assets/overlays/overlay1.json" background="transparent"  speed="2" loop autoplay >
+    </lottie-player> -->
+    <!-- <lottie-player *ngIf="capturing" style="position: absolute; z-index: 99; transform: scaleX(-1);" src="./../../../assets/overlays/character1.json" background="transparent"  speed="2" [loop]="false" autoplay >
+    </lottie-player> -->
     <!-- <img src="./../../../assets/overlays/demo.webp" id="camera-overlay" class="camera-overlay" /> -->
 </div>
 
 <div class="capture-loader">
-    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 7 || timeLeft == 6">
-        Ready?
-    </div>
-    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 5">
-        4
-    </div>
-    <div class="capture-loader-count app-fade" *ngIf="timeLeft == 4">
-        3
-    </div>
     <div class="capture-loader-count app-fade" *ngIf="timeLeft == 3">
-        2
+        <img src="./../../../assets/img/counter/3.png" />
     </div>
     <div class="capture-loader-count app-fade" *ngIf="timeLeft == 2">
-        1
+        <img src="./../../../assets/img/counter/2.png" />
     </div>
     <div class="capture-loader-count app-fade" *ngIf="timeLeft == 1">
-        Smile !!!
+        <img src="./../../../assets/img/counter/1.png" />
     </div>
 </div>
 
