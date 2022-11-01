@@ -4,7 +4,7 @@
         </lottie-player>
     </ng-container>
     <ng-container *ngIf="currentScreen?.lottie2">
-        <lottie-player *ngIf="capturing" style="position: absolute; z-index: 99; transform: scaleX(-1);" [src]="currentScreen?.lottie2" background="transparent"  speed="2" [loop]="false" autoplay >
+        <lottie-player *ngIf="capturing" style="position: absolute; z-index: 99;" [src]="currentScreen?.lottie2" background="transparent"  speed="2" [loop]="false" autoplay >
         </lottie-player>
     </ng-container>
     <ng-container *ngIf="currentScreen?.image1">
