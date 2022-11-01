@@ -1,1 +1,7 @@
-<p>templates-list works!</p>
+<div class="row mx-0 py-4">
+    <ng-container *ngFor="let screen of screens">
+        <div class="col-12 py-3 text-center">
+            <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/camera']" [queryParams]="{booth: screen?.name}" [innerHTML]="screen?.label"></a>
+        </div>
+    </ng-container>
+</div>

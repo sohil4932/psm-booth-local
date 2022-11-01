@@ -1,3 +1,4 @@
+import { SCREENS } from 'app/shared/constants/common.constants';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./templates-list.component.scss']
 })
 export class TemplatesListComponent implements OnInit {
+  screens = SCREENS;
 
   constructor() { }
 

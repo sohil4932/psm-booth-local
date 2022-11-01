@@ -38,7 +38,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   @HostListener('window:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     console.log('Key Log > ', event.key); 
-    if(event.key && event.key == 'Enter' && !this.capturing) {
+    if(event.key && (event.key == 'Enter' || event.key == 'PageUp') && !this.capturing) {
       if(this.currentCapture) {
         this.currentCapture = null;
         this.preview_url = null;
@@ -100,7 +100,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
         // navigator.mediaDevices.getUserMedia({ video: {advanced: [{width: 2160, height: 3840}]} }).then((stream) => {
         // navigator.mediaDevices.getUserMedia({ video: {advanced: [{aspectRatio: 9/16}]} }).then((stream) => {  
 
-        navigator.mediaDevices.getUserMedia({ video: { width: {ideal: 1280 }, height: {ideal: 720 } } }).then((stream) => {  
+        navigator.mediaDevices.getUserMedia({ video: { width: {ideal: 1920 }, height: {ideal: 1080 } } }).then((stream) => {  
           this.video.srcObject = stream;
           setTimeout(() => {
             const [videoTrack] = stream.getVideoTracks();

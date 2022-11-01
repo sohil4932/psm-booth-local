@@ -1,3 +1,4 @@
+import { TemplatesListComponent } from './layouts/templates-list/templates-list.component';
 import { PreviewImageComponent } from './layouts/preview-image/preview-image.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
@@ -12,9 +13,10 @@ import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.compo
 import { AnimationCameraComponent } from './layouts/animation-camera/animation-camera.component';
 
 const routes: Routes =[
-    { path: '', redirectTo: 'camera', pathMatch: 'full' },
+    { path: '', redirectTo: 'booths', pathMatch: 'full' },
     { path: 'camera',             component: AnimationCameraComponent },
     { path: 'preview',             component: PreviewImageComponent },
+    { path: 'booths',           component: TemplatesListComponent},
     { path: 'home',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
