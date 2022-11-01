@@ -26,6 +26,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+import {NgxImageCompressService} from "ngx-image-compress";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     NgCircleProgressModule.forRoot({}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [],
+  providers: [NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
