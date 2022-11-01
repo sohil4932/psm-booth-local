@@ -9,6 +9,8 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 // (window as any).QRCode = QRCode;
 import { finalize } from 'rxjs/operators';
 
+import {NgxImageCompressService} from "ngx-image-compress";
+
 @Component({
   selector: 'app-animation-camera',
   templateUrl: './animation-camera.component.html',
@@ -35,7 +37,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   loading:any = 0;
   capturing: boolean = false;
 
-  constructor(public http: HttpClient, private storage: AngularFireStorage) { }
+  constructor(public http: HttpClient, private storage: AngularFireStorage, private imageCompress: NgxImageCompressService) { }
 
   @HostListener('window:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -170,29 +172,35 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
     const filePath = '/booth1/' + fileName + '.png';
     const storageRef = this.storage.ref(filePath);
     // const uploadTask = this.storage.upload(filePath, this.currentCapture, 'data_url');
-    const uploadTask = storageRef.putString(this.currentCapture, 'data_url');
-    uploadTask.snapshotChanges().pipe(
-      finalize(() => {
-        storageRef.getDownloadURL().subscribe(downloadURL => {
-          this.preview_url = location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString();
-          this.capturing = false;
-          // this.preview_url = encodeURI(location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString());
-          // this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', '') + '&booth=booth1' + '&fileName=' + fileName.toString());
-          console.log(this.preview_url);
-        });
-      })
-    ).subscribe((res:any) => {
-      // console.log({res});
-      try {
-        this.loading = ((100 * res.bytesTransferred) / res.totalBytes).toFixed(0);
-      } catch(e) {
-        this.loading = 100;
-      }
-      console.log(this.loading);
-    }, (err) => {
-      console.error({err});
-      this.capturing = false;
-    });
+
+    this.imageCompress.compressFile(this.currentCapture, 1).then((compressedImage) => {
+      console.log(compressedImage);
+      const uploadTask = storageRef.putString(compressedImage, 'data_url');
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            this.preview_url = location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString();
+            this.capturing = false;
+            // this.preview_url = encodeURI(location.origin + '/preview' + '?booth=booth1' + '&fileName=' + fileName.toString());
+            // this.preview_url = encodeURI(location.host + '/preview?url=' + downloadURL.split('?')[0].replace('https://', '') + '&booth=booth1' + '&fileName=' + fileName.toString());
+            console.log(this.preview_url);
+          });
+        })
+      ).subscribe((res:any) => {
+        // console.log({res});
+        try {
+          this.loading = ((100 * res.bytesTransferred) / res.totalBytes).toFixed(0);
+        } catch(e) {
+          this.loading = 100;
+        }
+        console.log(this.loading);
+      }, (err) => {
+        console.error({err});
+        this.capturing = false;
+      });
+    })
+
+    
 
       // let base64Img = this.currentCapture.replace('data:image/png;base64,', '');
     
