@@ -33,6 +33,8 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   screens = SCREENS;
   currentScreen;
 
+  capturingEffect: boolean = false;
+
   constructor(private storage: AngularFireStorage, private imageCompress: NgxImageCompressService, private route: ActivatedRoute) { }
 
   @HostListener('window:keydown', ['$event'])
@@ -124,6 +126,10 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
   captureAndShow() {
     let videoContainer = document.getElementById('webcam-container');
     let that = this;
+    that.capturingEffect = true;
+    setTimeout(() => {
+      that.capturingEffect = false;
+    }, 1500);
     html2canvas(videoContainer).then(function (canvas) {
       that.currentCapture = canvas.toDataURL('image/png');
       setTimeout(() => {
