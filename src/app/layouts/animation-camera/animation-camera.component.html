@@ -39,7 +39,7 @@
     <img class="preview-img app-fade" src="{{ currentCapture }}" />
     <div class="qrcode-section">
         <div class="qrcode-container app-fade" *ngIf="!preview_url">
-            <div class="d-inline-block" style="width: 500px;">
+            <div class="d-inline-block" style="width: 350px;">
                 <circle-progress
                     [percent]="loading" [titleColor]="'#ffffff'" [unitsColor]="'#ffffff'" [outerStrokeColor]="'#2a6469'"
                     [radius]="100" [outerStrokeWidth]="18" [innerStrokeWidth]="18" [space]="-18"
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="qrcode-container app-fade" id="qrcode-container" *ngIf="preview_url">
-            <qrcode [qrdata]="preview_url" [width]="450" [errorCorrectionLevel]="'M'"></qrcode>
+            <qrcode [qrdata]="preview_url" [width]="350" [errorCorrectionLevel]="'M'"></qrcode>
         </div>
     </div>
 </div>
