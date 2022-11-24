@@ -16,6 +16,16 @@
     <ng-container *ngIf="currentScreen?.image2">
         <img [src]="currentScreen?.image2" style="z-index: 99; transform: scaleX(-1);" class="camera-overlay" />
     </ng-container>
+    <ng-container *ngIf="currentScreen?.video1">
+        <video style="z-index: 100; transform: scaleX(-1);" class="camera-overlay-for-video" autoplay loop muted>
+            <source [src]="currentScreen?.video1">
+        </video>
+    </ng-container>
+    <ng-container *ngIf="currentScreen?.video2">
+        <video style="z-index: 99; transform: scaleX(-1);" class="camera-overlay-for-video" autoplay loop muted>
+            <source [src]="currentScreen?.video2">
+        </video>
+    </ng-container>
     <!-- <lottie-player style="position: absolute; z-index: 100" src="./../../../assets/overlays/overlay1.json" background="transparent"  speed="2" loop autoplay >
     </lottie-player> -->
     <!-- <lottie-player *ngIf="capturing" style="position: absolute; z-index: 99; transform: scaleX(-1);" src="./../../../assets/overlays/character1.json" background="transparent"  speed="2" [loop]="false" autoplay >
