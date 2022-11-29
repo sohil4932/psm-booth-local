@@ -1,0 +1,17 @@
+<div class="h-100vh niyam-selection-container">
+    <div class="niyam-selection-container-wrapper">
+    </div>
+    <div class="row mx-0 niyam-selection py-5 px-4">
+        <div class="col-12 text-center">
+            <img src="./../../../assets/img/temp_logo.png" class="mb-5" style="width: 15rem;" />
+        </div>
+        <ng-container *ngFor="let niyam of niyams">
+            <div class="col-12 col-sm-4 mb-5">
+                <div (click)="openNiyam(niyam)" class="niyam-card cursor-pointer h-100 py-5 px-5 text-center">
+                    <div [innerHTML]="niyam?.label">
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

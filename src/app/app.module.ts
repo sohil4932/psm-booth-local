@@ -27,6 +27,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import {NgxImageCompressService} from "ngx-image-compress";
+import { NiyamSelectionComponent } from './layouts/niyam-selection/niyam-selection.component';
+import { NiyamsPreviewComponent } from './layouts/niyams-preview/niyams-preview.component';
+import { NiyamDetailComponent } from './layouts/niyam-selection/niyam-detail/niyam-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import {NgxImageCompressService} from "ngx-image-compress";
     FooterComponent,
     TemplatesListComponent,
     AnimationCameraComponent,
-    PreviewImageComponent
+    PreviewImageComponent,
+    NiyamSelectionComponent,
+    NiyamsPreviewComponent,
+    NiyamDetailComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
