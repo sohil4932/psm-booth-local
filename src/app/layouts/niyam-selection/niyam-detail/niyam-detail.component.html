@@ -1,10 +1,13 @@
 <div class="niyam-detail-container">
     <img src="./../../../../assets/psm/card-bg.png" class="niyam-detail-bg" />
     <div class="niyam-detail">
-        <h3 class="font-weight-900 text-center" [innerHTML]="niyam?.content">
+        <h3 class="font-weight-900 text-center" style="font-family: cursive;" [innerHTML]="niyam?.content">
         </h3>
         <div class="pt-4 text-center">
-            <button class="confirm-btn py-4"> <i class="fa fa-check text-success mr-4" aria-hidden="true"></i> Confirm </button> 
+            <button class="confirm-btn py-4" (click)="confirm()" style="font-family: cursive;"> 
+                <span style="color: rgb(2, 215, 2);">✔</span> Confirm
+                <!-- <i class="fa fa-check text-success mr-4" aria-hidden="true"></i> Confirm  -->
+            </button> 
         </div>
     </div>
 </div>

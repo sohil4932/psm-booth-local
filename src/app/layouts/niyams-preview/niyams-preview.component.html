@@ -1,1 +1,18 @@
-<p>niyams-preview works!</p>
+<div class="h-100vh niyam-selection-container">
+    <div class="row mx-0 niyam-selection py-4 px-4">
+        <div class="col-12 text-center">
+            <img src="./../../../assets/img/temp_logo.png" class="mb-4" style="width: 15rem;" />
+        </div>
+        <ng-container *ngFor="let niyam of niyams">
+            <div class="col-12 col-sm-6 mb-5 niyam-card-container">
+                <img src="./../../../assets/psm/card-bg.png" class="niyam-card-bg" />
+                <div (click)="openNiyam(niyam)" class="niyam-card cursor-pointer h-100 text-center d-flex flex-column" style="min-height: 30vh;">
+                    <div class="pb-3" style="font-family: cursive; margin: auto;" [innerHTML]="niyam?.label">
+                    </div>
+                    <div class="mt-auto" style="font-family: cursive; border-top: 1px solid #929292;" [innerHTML]="niyamsCounter[niyam?.id]">
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,36 +1,32 @@
 .niyam-selection-container {
-    position: relative;
     background: url(./../../../assets/psm/niyam-selection-page-bg.bmp);
     min-height: 100vh;
     background-position: center;
     background-size: cover;
 }
 
-.niyam-selection-container-wrapper {
+.niyam-card-container {
+    position: relative;
     z-index: 0;
-    background: rgba(0, 0, 0, 0.295);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
 }
 
-.niyam-selection {
-    z-index: 1;
+.niyam-card-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .niyam-card {
-    background-image: url(./../../../assets/psm/card-bg.png);
-    // background: url(./../../../assets/psm/card-bg.png);
-    background-position: center;
-    background-size: cover;
+    z-index: 1;
 
-    font-size: 4vw;
+    font-size: 2.7vw;
     color: black;
     font-weight: 900;
-}
 
-.cursor-pointer {
-    cursor: pointer;
+    padding: 3rem 6rem 3rem 5rem;
 }

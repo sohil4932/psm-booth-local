@@ -18,4 +18,8 @@ export class NiyamDetailComponent implements OnInit {
     this.activeModal.close(value ? true : false);
   }
 
+  confirm() {
+    this.close(true);
+  }
+
 }

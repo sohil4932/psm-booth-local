@@ -1,0 +1,32 @@
+.niyam-selection-container {
+    background: url(./../../../assets/psm/niyam-selection-page-bg.bmp);
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+
+.niyam-card-container {
+    position: relative;
+    z-index: 0;
+}
+
+.niyam-card-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.niyam-card {
+    z-index: 1;
+
+    font-size: 2.1vw;
+    color: black;
+    font-weight: 900;
+
+    padding: 3rem 6rem 3rem 5rem;
+}
