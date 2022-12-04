@@ -11,6 +11,7 @@ import * as firebase from 'firebase';
 })
 export class NiyamSelectionComponent implements OnInit {
   niyams = [];
+  loader: boolean = false;
 
   constructor(public db: AngularFirestore, private modalService: NgbModal) { }
 
@@ -42,12 +43,14 @@ export class NiyamSelectionComponent implements OnInit {
   }
 
   updateCount(niyam) {
+    this.loader = true;
+    setTimeout(() => {
+      this.loader = false;
+    }, 2000);
     let niyamsRef = this.db.collection('niyams-counter').doc(niyam.id);
 
     niyamsRef.update({count: firebase.default.firestore.FieldValue.increment(1)}).then(() => {
-    
     }).catch((e) => {
-  
     })
   }
 

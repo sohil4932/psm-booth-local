@@ -5,12 +5,30 @@
         </div>
         <ng-container *ngFor="let niyam of niyams">
             <div class="col-12 col-sm-6 mb-5 niyam-card-container">
-                <img src="./../../../assets/psm/card-bg.png" class="niyam-card-bg" />
+                <div (click)="updateCount(niyam)" class="d-flex flex-row cursor-pointer">
+                    <img [src]="'./../../../assets/niyams/' + niyam?.id + '.png'" class="niyam-card-img" />
+                    <!-- <img src="./../../../assets/icons/icon-72x72.png" class="niyam-card-img" /> -->
+                    <div class="niyam-new-card-container">
+                        <div class="niyam-new-card" [innerHTML]="niyam?.label">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <img src="./../../../assets/psm/card-bg.png" class="niyam-card-bg" />
                 <div (click)="openNiyam(niyam)" class="niyam-card cursor-pointer h-100 text-center">
                     <div style="font-family: cursive;" [innerHTML]="niyam?.label">
                     </div>
-                </div>
+                </div> -->
             </div>
         </ng-container>
     </div>
 </div>
+
+<div *ngIf="loader" style="position: fixed; z-index: 100001; top: 0; left: 0; right: 0; bottom: 0; background: #00000078;">
+    <lottie-player style="position: fixed; z-index: 100;" [src]="'assets/niyams/successful-lottie.json'" background="transparent"  speed="2" autoplay >
+    </lottie-player>    
+</div>
+
+<!-- <div *ngIf="loader" style="position: fixed; z-index: 100001; top: 0; left: 0; right: 0; bottom: 0;">
+    <img src="./../../../assets/niyams/success-msg.gif" style="width: 100%; height: 100%; opacity: 0.5;" />
+</div> -->

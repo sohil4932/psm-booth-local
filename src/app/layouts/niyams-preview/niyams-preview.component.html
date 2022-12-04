@@ -4,14 +4,31 @@
             <img src="./../../../assets/img/temp_logo.png" class="mb-4" style="width: 15rem;" />
         </div>
         <ng-container *ngFor="let niyam of niyams">
-            <div class="col-12 col-sm-6 mb-5 niyam-card-container">
-                <img src="./../../../assets/psm/card-bg.png" class="niyam-card-bg" />
+            <div class="col-12 col-sm-6 niyam-card-container" style="margin-bottom: 5rem;">
+                <div class="niyam-preview-card h-100 card shadow">
+                    <div class="text-center niyam-card-img-container">
+                        <img [src]="'./../../../assets/niyams/' + niyam?.id + '.png'" class="niyam-card-img" />
+                    </div>
+                    <div style="font-size: 5.4vh; font-weight: 900;" class="text-center text-white" [innerHTML]="niyamsCounter[niyam?.id]">
+                    </div>
+                    <div style="font-size: 3.0vh; font-weight: 900;" class="text-center text-white" [innerHTML]="niyam?.previewLabel">
+                    </div>
+                </div>
+                <!-- <div class="d-flex flex-row cursor-pointer">
+                    <img [src]="'./../../../assets/niyams/' + niyam?.id + '.png'" class="niyam-card-img" />
+                    <div class="niyam-new-card-container">
+                        <div class="niyam-new-card" [innerHTML]="niyam?.previewLabel">
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <img src="./../../../assets/psm/card-bg.png" class="niyam-card-bg" />
                 <div (click)="openNiyam(niyam)" class="niyam-card cursor-pointer h-100 text-center d-flex flex-column" style="min-height: 30vh;">
                     <div class="pb-3" style="font-family: cursive; margin: auto;" [innerHTML]="niyam?.label">
                     </div>
                     <div class="mt-auto" style="font-family: cursive; border-top: 1px solid #929292;" [innerHTML]="niyamsCounter[niyam?.id]">
                     </div>
-                </div>
+                </div> -->
             </div>
         </ng-container>
     </div>
