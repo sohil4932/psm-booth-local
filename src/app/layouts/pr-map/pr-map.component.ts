@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pr-map',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrMapComponent implements OnInit {
   slider: boolean = false;
+  @ViewChild(NgbCarousel) carousel;
 
   constructor() { }
 
@@ -15,6 +17,14 @@ export class PrMapComponent implements OnInit {
 
   openLocation() {
     this.slider = true;
+  }
+
+  swipe(e) {
+    if (e === 'swiperight') {
+      this.carousel.prev();
+    } else {
+      this.carousel.next();
+    } 
   }
 
 }
