@@ -30,6 +30,7 @@ import {NgxImageCompressService} from "ngx-image-compress";
 import { NiyamSelectionComponent } from './layouts/niyam-selection/niyam-selection.component';
 import { NiyamsPreviewComponent } from './layouts/niyams-preview/niyams-preview.component';
 import { NiyamDetailComponent } from './layouts/niyam-selection/niyam-detail/niyam-detail.component';
+import { PrMapComponent } from './layouts/pr-map/pr-map.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NiyamDetailComponent } from './layouts/niyam-selection/niyam-detail/niy
     PreviewImageComponent,
     NiyamSelectionComponent,
     NiyamsPreviewComponent,
-    NiyamDetailComponent
+    NiyamDetailComponent,
+    PrMapComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

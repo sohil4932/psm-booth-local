@@ -1,0 +1,31 @@
+<div style="position: relative;">
+    <img src="./../../../assets/pr/bg.jpeg" style="width: 100%; height: 100vh;" />
+    
+    <lottie-player (click)="openLocation()" class="pin-location" style="top: 12vh; left: 62%;" src="assets/pr/location-lottie.json" background="transparent" loop speed="1" autoplay >
+    </lottie-player>  
+    
+    <lottie-player (click)="openLocation()" class="pin-location" style="top: 52vh; left: 65%;" src="assets/pr/location-lottie.json" background="transparent" loop speed="1" autoplay >
+    </lottie-player>
+    
+    <lottie-player (click)="openLocation()" class="pin-location" style="top: 47vh; left: 33%;" src="assets/pr/location-lottie.json" background="transparent" loop speed="1" autoplay >
+    </lottie-player>
+
+</div>
+<div *ngIf="slider" style="position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100vh;">
+    <div (click)="slider = false" class="close-btn">
+        <i class="fa fa-times fa-3x"></i>
+    </div>
+    <div class="card page-carousel">
+        <ngb-carousel [animation]="true" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+            <ng-template ngbSlide>
+                <img src="assets/img/soroush-karimi.jpg" alt="Random first slide">
+            </ng-template>
+            <ng-template ngbSlide>
+                <img src="assets/img/federico-beccari.jpg" alt="Random second slide">
+            </ng-template>
+            <ng-template ngbSlide>
+                <img src="assets/img/joshua-stannard.jpg" alt="Random third slide">
+            </ng-template>
+        </ngb-carousel>
+    </div>
+</div>

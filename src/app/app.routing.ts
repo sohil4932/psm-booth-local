@@ -1,3 +1,4 @@
+import { PrMapComponent } from './layouts/pr-map/pr-map.component';
 import { TemplatesListComponent } from './layouts/templates-list/templates-list.component';
 import { PreviewImageComponent } from './layouts/preview-image/preview-image.component';
 import { NgModule } from '@angular/core';
@@ -21,7 +22,9 @@ const routes: Routes =[
     { path: 'booths',           component: TemplatesListComponent},
     { path: 'niyam-selection',           component: NiyamSelectionComponent},
     { path: 'niyams-preview',           component: NiyamsPreviewComponent},
-    // { path: 'home',             component: ComponentsComponent },
+    { path: 'pr',           component: PrMapComponent},
+    { path: 'home',             component: ComponentsComponent },
+    { path: '**', redirectTo: ''},
     // { path: 'user-profile',     component: ProfileComponent },
     // { path: 'signup',           component: SignupComponent },
     // { path: 'landing',          component: LandingComponent },
