@@ -16,8 +16,9 @@
     <div (click)="slider = false" class="close-btn">
         <i class="fa fa-times fa-3x"></i>
     </div>
-    <div class="card page-carousel" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)">
-        <ngb-carousel [animation]="true" [showNavigationArrows]="true" [showNavigationIndicators]="true" [paused]="true">
+
+    <div class="card page-carousel" (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')" >
+        <ngb-carousel [interval]="10000000" [animation]="true" [showNavigationArrows]="true" [showNavigationIndicators]="false" [paused]="true">
             <ng-template ngbSlide>
                 <img src="assets/img/soroush-karimi.jpg" alt="Random first slide">
             </ng-template>
