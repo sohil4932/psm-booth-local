@@ -11,24 +11,9 @@
                     </div>
                     <div style="font-size: 5.4vh; font-weight: 900;" class="text-center text-white" [innerHTML]="niyamsCounter[niyam?.id]">
                     </div>
-                    <div style="font-size: 3.0vh; font-weight: 900;" class="text-center text-white" [innerHTML]="niyam?.previewLabel">
+                    <div style="font-size: 3.0vh; font-weight: 900;" class="text-center text-white px-3" [innerHTML]="niyam[language]">
                     </div>
                 </div>
-                <!-- <div class="d-flex flex-row cursor-pointer">
-                    <img [src]="'./../../../assets/niyams/' + niyam?.id + '.png'" class="niyam-card-img" />
-                    <div class="niyam-new-card-container">
-                        <div class="niyam-new-card" [innerHTML]="niyam?.previewLabel">
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <img src="./../../../assets/psm/card-bg.png" class="niyam-card-bg" />
-                <div (click)="openNiyam(niyam)" class="niyam-card cursor-pointer h-100 text-center d-flex flex-column" style="min-height: 30vh;">
-                    <div class="pb-3" style="font-family: cursive; margin: auto;" [innerHTML]="niyam?.label">
-                    </div>
-                    <div class="mt-auto" style="font-family: cursive; border-top: 1px solid #929292;" [innerHTML]="niyamsCounter[niyam?.id]">
-                    </div>
-                </div> -->
             </div>
         </ng-container>
     </div>

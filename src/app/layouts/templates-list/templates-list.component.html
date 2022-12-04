@@ -4,4 +4,38 @@
             <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/camera']" [queryParams]="{booth: screen?.name}" [innerHTML]="screen?.label"></a>
         </div>
     </ng-container>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12 py-3 text-center">
+        <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/niyam-selection']" [queryParams]="{language: 'english'}">
+            Niyam Selection (English)
+        </a>
+    </div>
+    <div class="col-12 py-3 text-center">
+        <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/niyam-selection']" [queryParams]="{language: 'gujarati'}">
+            Niyam Selection (Gujarati)
+        </a>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12 py-3 text-center">
+        <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/niyams-preview']" [queryParams]="{language: 'english'}">
+            Niyams Preview (English)
+        </a>
+    </div>
+    <div class="col-12 py-3 text-center">
+        <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/niyams-preview']" [queryParams]="{language: 'gujarati'}">
+            Niyams Preview (Gujarati)
+        </a>
+    </div>
+    <div class="col-12">
+        <hr/>
+    </div>
+    <div class="col-12 py-3 text-center">
+        <a class="btn btn-primary col-9" style="font-size: 1.5rem;" [routerLink]="['/pr']">
+            PR Map
+        </a>
+    </div>
 </div>

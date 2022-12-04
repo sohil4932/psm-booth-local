@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-niyams-preview',
@@ -10,9 +11,21 @@ export class NiyamsPreviewComponent implements OnInit {
   niyams = [];
   niyamsCounter = {};
 
-  constructor(public db: AngularFirestore) { }
+  language = 'englishLabel';
+
+  constructor(public db: AngularFirestore, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+        try {
+          if(params && params.language && params.language == 'gujarati') {
+            this.language = 'gujaratiLabel';
+          }
+        } catch(e) {
+        }
+      }
+    );
     this.getNiyams();
   }
 

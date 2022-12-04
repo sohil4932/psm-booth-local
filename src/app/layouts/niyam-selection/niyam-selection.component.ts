@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,9 +14,21 @@ export class NiyamSelectionComponent implements OnInit {
   niyams = [];
   loader: boolean = false;
 
-  constructor(public db: AngularFirestore, private modalService: NgbModal) { }
+  language = 'englishLabel';
+
+  constructor(public db: AngularFirestore, private modalService: NgbModal, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+        try {
+          if(params && params.language && params.language == 'gujarati') {
+            this.language = 'gujaratiLabel';
+          }
+        } catch(e) {
+        }
+      }
+    );
     this.getNiyams();
   }
 
