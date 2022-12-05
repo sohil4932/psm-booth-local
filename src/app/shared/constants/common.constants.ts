@@ -12,11 +12,11 @@ export const SCREENS = [
     {
         name: 'booth2',
         label: 'Booth 2',
-        lottie1: 'assets/overlays/overlay1.json',
-        lottie2: 'assets/overlays/character1.json',
-        image1: 'assets/overlays/demo.webp',
+        lottie1: '',
+        lottie2: '',
+        image1: '',
         image2: '',
-        video1: '',
+        video1: 'assets/overlays/booth2.webm',
         video2: '',
     },
     {
@@ -26,7 +26,7 @@ export const SCREENS = [
         lottie2: '',
         image1: '',
         image2: '',
-        video1: 'assets/overlays/buzo_face.webm',
-        video2: 'assets/overlays/buzo_face.webm',
+        video1: 'assets/overlays/booth3.webm',
+        video2: '',
     },
 ];
