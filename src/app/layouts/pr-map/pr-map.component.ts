@@ -13,12 +13,58 @@ export class PrMapComponent implements OnInit {
   private swipeCoord?: [number, number];
   private swipeTime?: number;
 
+  slides = {
+    tanki: [
+              'assets/pr/collections/balSnehiGarden/1.JPG',
+              'assets/pr/collections/balSnehiGarden/2.JPG'
+           ],
+    balSnehiGarden: [
+              'assets/pr/collections/balSnehiGarden/1.JPG',
+              'assets/pr/collections/balSnehiGarden/2.JPG'
+           ],
+    train: [
+            'assets/pr/collections/train/1.JPG'
+           ],
+    bapaniMurti: [
+            'assets/pr/collections/bapaniMurti/1.JPG'
+          ],
+    fassadWithCharacter: [
+            'assets/pr/collections/fassadWithCharacter/1.JPG',
+            'assets/pr/collections/fassadWithCharacter/2.JPG',
+            'assets/pr/collections/fassadWithCharacter/3.JPG',
+            'assets/pr/collections/fassadWithCharacter/4.JPG',
+            'assets/pr/collections/fassadWithCharacter/5.JPG',
+            'assets/pr/collections/fassadWithCharacter/6.JPG'
+          ],
+    animalCorner: [
+            'assets/pr/collections/animalCorner/1.png',
+            'assets/pr/collections/animalCorner/2.png',
+            'assets/pr/collections/animalCorner/3.png',
+            'assets/pr/collections/animalCorner/4.png'
+          ],
+    talentStage: [
+            'assets/pr/collections/talentStage/1.jpg'
+          ],
+    balBalikaDance: [
+            'assets/pr/collections/balBalikaDance/1.png',
+            'assets/pr/collections/balBalikaDance/2.png',
+            'assets/pr/collections/balBalikaDance/3.png'
+          ],
+    mascot: [
+            'assets/pr/collections/mascot/1.png',
+            'assets/pr/collections/mascot/2.png'
+          ]
+  };
+
+  currentSliders = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  openLocation() {
+  openLocation(location?) {
+    this.currentSliders = this.slides[location];
     this.slider = true;
   }
 
