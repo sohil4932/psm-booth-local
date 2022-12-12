@@ -15,35 +15,46 @@ export class PrMapComponent implements OnInit {
 
   slides = {
     tanki: [
-              'assets/pr/collections/balSnehiGarden/1.JPG',
-              'assets/pr/collections/balSnehiGarden/2.JPG'
+              'assets/pr/collections/tanki/1.png',
+              'assets/pr/collections/tanki/2.png'
            ],
     balSnehiGarden: [
-              'assets/pr/collections/balSnehiGarden/1.JPG',
-              'assets/pr/collections/balSnehiGarden/2.JPG'
+              'assets/pr/collections/balSnehiGarden/1.png',
+              'assets/pr/collections/balSnehiGarden/2.png',
+              'assets/pr/collections/balSnehiGarden/3.png',
+              'assets/pr/collections/balSnehiGarden/4.png',
+              'assets/pr/collections/balSnehiGarden/5.png',
+              'assets/pr/collections/balSnehiGarden/6.png',
+              'assets/pr/collections/balSnehiGarden/7.png'
            ],
     train: [
-            'assets/pr/collections/train/1.JPG'
+            'assets/pr/collections/train/1.png',
+            'assets/pr/collections/train/2.png'
            ],
     bapaniMurti: [
-            'assets/pr/collections/bapaniMurti/1.JPG'
+            'assets/pr/collections/bapaniMurti/1.png',
+            'assets/pr/collections/bapaniMurti/2.png',
+            'assets/pr/collections/bapaniMurti/3.png',
+            'assets/pr/collections/bapaniMurti/4.png'
           ],
     fassadWithCharacter: [
-            'assets/pr/collections/fassadWithCharacter/1.JPG',
-            'assets/pr/collections/fassadWithCharacter/2.JPG',
-            'assets/pr/collections/fassadWithCharacter/3.JPG',
-            'assets/pr/collections/fassadWithCharacter/4.JPG',
-            'assets/pr/collections/fassadWithCharacter/5.JPG',
-            'assets/pr/collections/fassadWithCharacter/6.JPG'
+            'assets/pr/collections/fassadWithCharacter/1.png',
+            'assets/pr/collections/fassadWithCharacter/2.png',
+            'assets/pr/collections/fassadWithCharacter/3.png'
           ],
     animalCorner: [
             'assets/pr/collections/animalCorner/1.png',
             'assets/pr/collections/animalCorner/2.png',
-            'assets/pr/collections/animalCorner/3.png',
-            'assets/pr/collections/animalCorner/4.png'
+            'assets/pr/collections/animalCorner/4.png',
+            'assets/pr/collections/animalCorner/5.png',
+            'assets/pr/collections/animalCorner/6.png',
+            'assets/pr/collections/animalCorner/7.png',
+            'assets/pr/collections/animalCorner/8.png',
+            'assets/pr/collections/animalCorner/9.png'
           ],
     talentStage: [
-            'assets/pr/collections/talentStage/1.jpg'
+            'assets/pr/collections/talentStage/1.png',
+            'assets/pr/collections/talentStage/2.png'
           ],
     balBalikaDance: [
             'assets/pr/collections/balBalikaDance/1.png',
@@ -52,7 +63,10 @@ export class PrMapComponent implements OnInit {
           ],
     mascot: [
             'assets/pr/collections/mascot/1.png',
-            'assets/pr/collections/mascot/2.png'
+            'assets/pr/collections/mascot/2.png',
+            'assets/pr/collections/mascot/3.png',
+            'assets/pr/collections/mascot/4.png',
+            'assets/pr/collections/mascot/5.png'
           ]
   };
 
