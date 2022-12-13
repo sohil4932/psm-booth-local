@@ -29,4 +29,14 @@ export const SCREENS = [
         video1: 'assets/overlays/booth3.webm',
         video2: '',
     },
+    {
+        name: 'booth4',
+        label: 'Booth 4',
+        lottie1: '',
+        lottie2: '',
+        image1: '',
+        image2: '',
+        video1: 'assets/overlays/booth4.webm',
+        video2: '',
+    }
 ];
