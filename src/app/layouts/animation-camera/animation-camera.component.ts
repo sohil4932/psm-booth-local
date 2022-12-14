@@ -132,14 +132,14 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
       that.capturingEffect = false;
     }, 1500);
     html2canvas(videoContainer).then(function (canvas) {
-      // that.currentCapture = canvas.toDataURL('image/png');
+    that.currentCapture = canvas.toDataURL('image/png');
 
       canvas.toBlob(blob => {
         const file = new File([blob], (new Date().getTime() + ".png"));
-        that.currentCapture = file;
+        // that.currentCapture = file;
         setTimeout(() => {
           // that.uploadImage();
-          that.uploadImageNew();
+          that.uploadImageNew(file);
         });
       });
 
@@ -150,17 +150,17 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
     });
   }
 
-  uploadImageNew() {
+  uploadImageNew(file) {
     const fileName = new Date().getTime();
-    const filePath = '/' + fileName + '.png';
+    const filePath = 'http://192.168.0.100:8000/' + fileName + '.png';
     this.loading = 30;
 
     var formData:FormData = new FormData();
-    formData.append('files', this.currentCapture);
+    formData.append('files', file);
     
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append("Content-Type", "multipart/form-data");
-    this.http.post('', formData, { headers: headers }).subscribe((res: any) => {
+    // headers = headers.append("Content-Type", "multipart/form-data");
+    this.http.post('http://192.168.0.100:8000/upload', formData).subscribe((res: any) => {
       this.preview_url = filePath;
       this.loading = 100;
       this.capturing = false;
