@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -35,7 +36,7 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
 
   capturingEffect: boolean = false;
 
-  constructor(private storage: AngularFireStorage, private imageCompress: NgxImageCompressService, private route: ActivatedRoute) { }
+  constructor(private storage: AngularFireStorage, private imageCompress: NgxImageCompressService, private route: ActivatedRoute, public http: HttpClient) { }
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -131,10 +132,41 @@ export class AnimationCameraComponent implements OnInit, AfterViewInit, OnDestro
       that.capturingEffect = false;
     }, 1500);
     html2canvas(videoContainer).then(function (canvas) {
-      that.currentCapture = canvas.toDataURL('image/png');
-      setTimeout(() => {
-        that.uploadImage();
+      // that.currentCapture = canvas.toDataURL('image/png');
+
+      canvas.toBlob(blob => {
+        const file = new File([blob], (new Date().getTime() + ".png"));
+        that.currentCapture = file;
+        setTimeout(() => {
+          // that.uploadImage();
+          that.uploadImageNew();
+        });
       });
+
+      // setTimeout(() => {
+      //   // that.uploadImage();
+      //   that.uploadImageNew();
+      // });
+    });
+  }
+
+  uploadImageNew() {
+    const fileName = new Date().getTime();
+    const filePath = '/' + fileName + '.png';
+    this.loading = 30;
+
+    var formData:FormData = new FormData();
+    formData.append('files', this.currentCapture);
+    
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append("Content-Type", "multipart/form-data");
+    this.http.post('', formData, { headers: headers }).subscribe((res: any) => {
+      this.preview_url = filePath;
+      this.loading = 100;
+      this.capturing = false;
+    }, (err) => {
+      console.warn({err});
+      this.capturing = false;
     });
   }
 
